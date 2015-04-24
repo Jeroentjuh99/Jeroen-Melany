@@ -19,13 +19,12 @@ public class Gui extends JPanel implements ActionListener {
 
     private Tile tile = null;
     private Feedback feedback;
-    private Graphics2D g2;
 
     public Gui(Dimension dim) {
 	this.setSize(dim);
 	Point point = new Point((int) (dim.getWidth() / 2) - 200, (int) (dim.getHeight() / 2) - 200);
 	tile = new Tile("src/view/images/Simon.png", point);
-	feedback = new Feedback(g2, dim);
+	feedback =  new Feedback(dim);
 	Timer timer = new Timer(1000 / 30, this);
 	timer.start();
     }
@@ -33,8 +32,9 @@ public class Gui extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
 	super.paintComponent(g);
-	g2 = (Graphics2D) g;
+	Graphics2D g2 = (Graphics2D) g;
 	tile.draw(g2);
+	//feedback.drawCircles(g2, (byte) 1);
     }
 
     @Override
