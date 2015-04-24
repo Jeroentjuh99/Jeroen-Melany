@@ -5,6 +5,7 @@
  */
 package control;
 
+import view.Gui;
 import wiiusej.wiiusejevents.physicalevents.*;
 import wiiusej.wiiusejevents.utils.WiimoteListener;
 import wiiusej.wiiusejevents.wiiuseapievents.*;
@@ -14,18 +15,23 @@ import wiiusej.wiiusejevents.wiiuseapievents.*;
  * @author jeroen
  */
 public class MyListener implements WiimoteListener {
+    private Gui gui;
+    
+    public MyListener(Gui gui){
+	this.gui = gui;
+    }
 
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
 	System.out.println(e);
 	if (e.isButtonUpPressed()) {
-	    System.out.println("up");
+	    gui.changeight((byte)1);
 	} else if (e.isButtonRightPressed()) {
-	    System.out.println("right");
+	    gui.changeight((byte)2);
 	} else if (e.isButtonDownPressed()) {
-	    System.out.println("down");
+	    gui.changeight((byte)3);
 	} else if (e.isButtonLeftPressed()) {
-	    System.out.println("left");
+	    gui.changeight((byte)4);
 	} else {
 	    System.out.println("verkeerde button" + e.getButtonsJustReleased());
 	}

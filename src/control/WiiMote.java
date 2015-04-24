@@ -17,7 +17,7 @@ public class WiiMote {
 	wiimotes = WiiUseApiManager.getWiimotes(4, true);
 	for(byte i = 0; i < wiimotes.length; i++){
 	    Wiimote wiiMote = wiimotes[i];
-	    wiiMote.addWiiMoteEventListeners(new MyListener());
+	    wiiMote.addWiiMoteEventListeners(new MyListener(gui));
 	}
     }
 }

@@ -16,7 +16,7 @@ import javax.swing.*;
  * @author jeroen
  */
 public class Gui extends JPanel implements ActionListener {
-
+    private Byte light = 0;
     private Tile tile = null;
     private Feedback feedback;
 
@@ -34,11 +34,15 @@ public class Gui extends JPanel implements ActionListener {
 	super.paintComponent(g);
 	Graphics2D g2 = (Graphics2D) g;
 	tile.draw(g2);
-	//feedback.drawCircles(g2, (byte) 1);
+	feedback.drawCircles(g2, light);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 	repaint();
+    }
+    
+    public void changeight(Byte b){
+	this.light = b;
     }
 }
