@@ -16,12 +16,12 @@ import javax.swing.*;
  */
 public class Gui extends JPanel implements ActionListener {
 
-    private Tile[] tiles = {null};
+    private Tile tile = null;
 
     public Gui(Dimension dim) {
 	this.setSize(dim);
 	Point point = new Point((int) (dim.getWidth() / 2) - 200, (int) (dim.getHeight() / 2) - 200);
-	tiles[0] = new Tile("src/view/images/Simon.png", point);
+	tile = new Tile("src/view/images/Simon.png", point);
 	Timer timer = new Timer(1000 / 30, this);
 	timer.start();
     }
@@ -31,9 +31,7 @@ public class Gui extends JPanel implements ActionListener {
 	super.paintComponent(g);
 	Graphics2D g2 = (Graphics2D) g;
 
-	for (Tile tile : tiles) {
-	    tile.draw(g2);
-	}
+	tile.draw(g2);
     }
 
     @Override

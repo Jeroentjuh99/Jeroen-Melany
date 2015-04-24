@@ -14,10 +14,6 @@ import wiiusej.wiiusejevents.wiiuseapievents.*;
  * @author jeroen
  */
 public class MyListener implements WiimoteListener {
-    
-    public MyListener(){
-	System.out.println("Added");
-    }
 
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
