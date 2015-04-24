@@ -22,7 +22,7 @@ public class Feedback
 	private float[] fl = new float[] { 0.0f, 0.5f };
 	private Graphics2D g2;
 	
-	public Feedback(Graphics2D g2, Dimension dim)
+	public Feedback(Dimension dim)
 	{
 		this.g2 = g2;
 		screenWidth = dim.getWidth();
@@ -34,7 +34,7 @@ public class Feedback
 		green = new Ellipse2D.Double(screenWidth/2-ellipseSize/2-142, screenHeight/2-ellipseSize/2, ellipseSize, ellipseSize);
 	}
 	
-	public void drawCircles(byte b)
+	public void drawCircles(Graphics2D g2, byte b)
 	{
 		switch(b)
 		{
