@@ -27,10 +27,6 @@ public class Tile {
 	this.tile = new ImageIcon(path).getImage();
     }
 
-    public void changeLight() {
-	lightBool = !lightBool;
-    }
-
     public void draw(Graphics g) {
 	Graphics2D g2 = (Graphics2D) g;
 	g2.drawImage(tile, pos.x, pos.y, null);

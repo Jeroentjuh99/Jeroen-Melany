@@ -15,22 +15,14 @@ import javax.swing.*;
  * @author jeroen
  */
 public class Gui extends JPanel implements ActionListener {
-    private Tile[] tiles = {null, null, null, null, null};
+    private Tile[] tiles = {null};
     
     public Gui(Dimension dim) {
 	this.setSize(dim);
 	Point point = new Point((int)(dim.getWidth()/2)-200, (int)(dim.getHeight()/2)-200);
-	makeSimon(point);	
+	tiles[0] = new Tile("src/view/images/Simon.png", point);
 	Timer timer = new Timer(1000 / 30, this);
 	timer.start();
-    }
-    
-    private void makeSimon(Point point){
-	tiles[0] = new Tile("src/view/images/base.png", point);
-	tiles[1] = new Tile("src/view/images/red.png", point);
-	tiles[2] = new Tile("src/view/images/blue.png", point);
-	tiles[3] = new Tile("src/view/images/yellow.png", point);
-	tiles[4] = new Tile("src/view/images/cyan.png", point);
     }
 
     @Override
