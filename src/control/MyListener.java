@@ -18,6 +18,17 @@ public class MyListener implements WiimoteListener {
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
 	System.out.println(e);
+	if (e.isButtonUpPressed()) {
+	    System.out.println("up");
+	} else if (e.isButtonRightPressed()) {
+	    System.out.println("right");
+	} else if (e.isButtonDownPressed()) {
+	    System.out.println("down");
+	} else if (e.isButtonLeftPressed()) {
+	    System.out.println("left");
+	} else {
+	    System.out.println("verkeerde button" + e.getButtonsJustReleased());
+	}
     }
 
     @Override
@@ -37,7 +48,7 @@ public class MyListener implements WiimoteListener {
 
     @Override
     public void onStatusEvent(StatusEvent e) {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
