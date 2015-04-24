@@ -31,8 +31,7 @@ public class Tile {
 	lightBool = !lightBool;
     }
 
-    public void draw(Graphics g) {
-	Graphics2D g2 = (Graphics2D) g;
+    public void draw(Graphics2D g2) {
 	g2.drawImage(tile, pos.x, pos.y, null);
     }
 }

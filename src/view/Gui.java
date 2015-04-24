@@ -39,7 +39,7 @@ public class Gui extends JPanel implements ActionListener {
 	Graphics2D g2 = (Graphics2D) g;
 	
 	for (Tile tile : tiles) {
-	    tile.draw(g);
+	    tile.draw(g2);
 	}
     }
 
