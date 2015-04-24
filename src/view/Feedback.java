@@ -20,7 +20,6 @@ public class Feedback
 	private double ellipseSize = 90;
 	private Color[] colors = new Color[]{new Color(255, 163, 0),new Color(236,13,13,0)};
 	private float[] fl = new float[] { 0.0f, 0.5f };
-	private Graphics2D g2;
 	
 	public Feedback(Dimension dim)
 	{
