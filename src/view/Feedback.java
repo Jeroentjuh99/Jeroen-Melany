@@ -20,9 +20,11 @@ public class Feedback
 	private double ellipseSize = 90;
 	private Color[] colors = new Color[]{new Color(255, 163, 0),new Color(236,13,13,0)};
 	private float[] fl = new float[] { 0.0f, 0.5f };
+	private Graphics2D g2;
 	
-	public Feedback(Dimension dim)
+	public Feedback(Graphics2D g2, Dimension dim)
 	{
+		this.g2 = g2;
 		screenWidth = dim.getWidth();
 		screenHeight = dim.getHeight();
 				
@@ -32,7 +34,7 @@ public class Feedback
 		green = new Ellipse2D.Double(screenWidth/2-ellipseSize/2-142, screenHeight/2-ellipseSize/2, ellipseSize, ellipseSize);
 	}
 	
-	public void drawCircles(Graphics2D g2, byte b)
+	public void drawCircles(byte b)
 	{
 		switch(b)
 		{
