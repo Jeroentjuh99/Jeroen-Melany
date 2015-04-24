@@ -24,7 +24,6 @@ public class Feedback
 	
 	public Feedback(Dimension dim)
 	{
-		this.g2 = g2;
 		screenWidth = dim.getWidth();
 		screenHeight = dim.getHeight();
 				
