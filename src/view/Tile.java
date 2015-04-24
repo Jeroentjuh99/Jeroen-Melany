@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
@@ -18,17 +17,11 @@ import javax.swing.ImageIcon;
 public class Tile {
 
     private Point pos;
-    private boolean lightBool;
     private Image tile;
 
     public Tile(String path, Point pos) {
 	this.pos = pos;
-	this.lightBool = false;
 	this.tile = new ImageIcon(path).getImage();
-    }
-
-    public void changeLight() {
-	lightBool = !lightBool;
     }
 
     public void draw(Graphics2D g2) {
