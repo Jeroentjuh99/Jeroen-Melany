@@ -12,20 +12,26 @@ import java.util.ArrayList;
  * @author jeroen
  */
 public class GameOrder {
+
     private ArrayList<Byte> orderlist;
-    
-    public GameOrder(){
+
+    public GameOrder() {
 	this.orderlist = new ArrayList<Byte>();
-	int start = (int)Math.random()*3+1;
-	orderlist.add((byte)start);
+	int start = (int) Math.random() * 3 + 1;
+	orderlist.add((byte) start);
     }
-    
-    public void addOrder(){
-	int number = (int)Math.random()*3+1;
-	orderlist.add((byte)number);
+
+    public void addOrder() {
+	byte numberLast = orderlist.get(orderlist.size());
+	int number = (int) Math.random() * 3 + 1;
+	if (numberLast == (byte) number) {
+	    orderlist.add((byte) number);
+	} else {
+	    addOrder();
+	}
     }
-    
-    public ArrayList getOrder(){
+
+    public ArrayList getOrder() {
 	return orderlist;
     }
 }

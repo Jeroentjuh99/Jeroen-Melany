@@ -36,7 +36,7 @@ public class MyListener implements WiimoteListener {
 	} else if (e.isButtonLeftPressed()) {
 	    gui.changeight((byte) 4);
 	} else if (e.isButtonAPressed()) {
-	    model.pressedButton("A");
+	    model.pressedButton('a');
 	} else {
 	    //System.out.println("verkeerde button" + e.getButtonsJustReleased());
 	}

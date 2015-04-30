@@ -20,6 +20,7 @@ public class GameModel implements ActionListener {
     private boolean isPlaying, isGameOver, isGameRunning = false;
     private final Gui gui;
     private GameOrder order;
+    private Character pressedButton;
 
     public GameModel(Gui gui) {
 	this.gui = gui;
@@ -42,7 +43,11 @@ public class GameModel implements ActionListener {
     }
 
     public void update() {
-	
+	if (isGameRunning) {
+	    if(isPlaying){
+		
+	    }
+	}
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -51,8 +56,11 @@ public class GameModel implements ActionListener {
 
     public void pressedButton(Character charFromListener) {
 	if (charFromListener.equals('a')) {
-	    if (!isGameRunning) {
+	    if (!isGameRunning && !isGameOver) {
 		isGameRunning = true;
+	    }
+	    else{
+		this.pressedButton = charFromListener;
 	    }
 	}
     }
