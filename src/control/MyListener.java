@@ -5,6 +5,7 @@
  */
 package control;
 
+import models.GameModel;
 import view.Gui;
 import wiiusej.wiiusejevents.physicalevents.*;
 import wiiusej.wiiusejevents.utils.WiimoteListener;
@@ -16,14 +17,15 @@ import wiiusej.wiiusejevents.wiiuseapievents.*;
  */
 public class MyListener implements WiimoteListener {
     private Gui gui;
+    private final GameModel model;
     
-    public MyListener(Gui gui){
+    public MyListener(Gui gui, GameModel model){
 	this.gui = gui;
+	this.model = model;
     }
 
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
-	System.out.println(e);
 	if (e.isButtonUpPressed()) {
 	    gui.changeight((byte)1);
 	} else if (e.isButtonRightPressed()) {
@@ -33,7 +35,7 @@ public class MyListener implements WiimoteListener {
 	} else if (e.isButtonLeftPressed()) {
 	    gui.changeight((byte)4);
 	} else {
-	    System.out.println("verkeerde button" + e.getButtonsJustReleased());
+	    //System.out.println("verkeerde button" + e.getButtonsJustReleased());
 	}
     }
 

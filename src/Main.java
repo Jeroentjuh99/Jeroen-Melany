@@ -3,6 +3,7 @@ import control.WiiMote;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import models.GameModel;
 import view.Gui;
 
 /*
@@ -22,7 +23,8 @@ public class Main {
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
 	Gui gui = new Gui(dim);
-	WiiMote wMote = new WiiMote(gui);
+	GameModel model = new GameModel(gui);
+	WiiMote wMote = new WiiMote(gui, model);
 
 	frame.setContentPane(gui);
 	frame.setSize(dim);
