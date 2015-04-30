@@ -16,32 +16,32 @@ import view.Gui;
  * @author jeroen
  */
 public class GameModel implements ActionListener {
-
+    
     private boolean isPlaying, isGameOver, isGameRunning = false;
     private final Gui gui;
     private GameOrder order;
     private Character pressedButton;
-
+    
     public GameModel(Gui gui) {
 	this.gui = gui;
 	this.order = new GameOrder();
-
+	
 	Timer timer = new Timer(1000 / 10, this);
 	timer.start();
     }
-
+    
     public ArrayList getOrder() {
 	return order.getOrder();
     }
-
+    
     public void addOrder() {
 	order.addOrder();
     }
-
+    
     public void newOrder() {
 	this.order = new GameOrder();
     }
-
+    
     public void update() {
 	if (isGameRunning) {
 	    if (isPlaying) {
@@ -52,13 +52,11 @@ public class GameModel implements ActionListener {
 			tick = 10;
 		    }
 		    gui.changeLight(b);
-		    
-		    
 		}
 		isPlaying = false;
-
+		
 	    } else if (!isPlaying) {
-
+		return;
 	    } else if (isGameOver) {
 		isPlaying = false;
 		isGameRunning = false;
@@ -66,11 +64,11 @@ public class GameModel implements ActionListener {
 	    }
 	}
     }
-
+    
     public void actionPerformed(ActionEvent e) {
 	update();
     }
-
+    
     public void pressedButton(Character charFromListener) {
 	if (charFromListener.equals('a')) {
 	    if (!isGameRunning && !isGameOver) {
