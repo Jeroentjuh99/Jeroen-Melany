@@ -16,10 +16,11 @@ import wiiusej.wiiusejevents.wiiuseapievents.*;
  * @author jeroen
  */
 public class MyListener implements WiimoteListener {
+
     private Gui gui;
     private final GameModel model;
-    
-    public MyListener(Gui gui, GameModel model){
+
+    public MyListener(Gui gui, GameModel model) {
 	this.gui = gui;
 	this.model = model;
     }
@@ -27,13 +28,15 @@ public class MyListener implements WiimoteListener {
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
 	if (e.isButtonUpPressed()) {
-	    gui.changeight((byte)1);
+	    gui.changeight((byte) 1);
 	} else if (e.isButtonRightPressed()) {
-	    gui.changeight((byte)2);
+	    gui.changeight((byte) 2);
 	} else if (e.isButtonDownPressed()) {
-	    gui.changeight((byte)3);
+	    gui.changeight((byte) 3);
 	} else if (e.isButtonLeftPressed()) {
-	    gui.changeight((byte)4);
+	    gui.changeight((byte) 4);
+	} else if (e.isButtonAPressed()) {
+	    model.pressedButton("A");
 	} else {
 	    //System.out.println("verkeerde button" + e.getButtonsJustReleased());
 	}
