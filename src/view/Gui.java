@@ -41,7 +41,7 @@ public class Gui extends JPanel implements ActionListener {
 	repaint();
     }
     
-    public void changeight(Byte b){
+    public void changeLight(Byte b){
 	this.light = b;
     }
 }

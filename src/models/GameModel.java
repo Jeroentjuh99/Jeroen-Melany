@@ -44,8 +44,25 @@ public class GameModel implements ActionListener {
 
     public void update() {
 	if (isGameRunning) {
-	    if(isPlaying){
-		
+	    if (isPlaying) {
+		ArrayList<Byte> bytes = getOrder();
+		for (byte b : bytes) {
+		    int tick = 50 - bytes.indexOf(b);
+		    if (tick < 0) {
+			tick = 10;
+		    }
+		    gui.changeLight(b);
+		    
+		    
+		}
+		isPlaying = false;
+
+	    } else if (!isPlaying) {
+
+	    } else if (isGameOver) {
+		isPlaying = false;
+		isGameRunning = false;
+		isGameOver = false;
 	    }
 	}
     }
@@ -58,8 +75,8 @@ public class GameModel implements ActionListener {
 	if (charFromListener.equals('a')) {
 	    if (!isGameRunning && !isGameOver) {
 		isGameRunning = true;
-	    }
-	    else{
+		isPlaying = true;
+	    } else {
 		this.pressedButton = charFromListener;
 	    }
 	}

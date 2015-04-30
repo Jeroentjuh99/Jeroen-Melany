@@ -28,13 +28,13 @@ public class MyListener implements WiimoteListener {
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
 	if (e.isButtonUpPressed()) {
-	    gui.changeight((byte) 1);
+	    model.pressedButton('1');
 	} else if (e.isButtonRightPressed()) {
-	    gui.changeight((byte) 2);
+	    model.pressedButton('2');
 	} else if (e.isButtonDownPressed()) {
-	    gui.changeight((byte) 3);
+	    model.pressedButton('3');
 	} else if (e.isButtonLeftPressed()) {
-	    gui.changeight((byte) 4);
+	    model.pressedButton('4');
 	} else if (e.isButtonAPressed()) {
 	    model.pressedButton('a');
 	} else {
