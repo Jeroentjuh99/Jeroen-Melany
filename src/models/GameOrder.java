@@ -22,7 +22,7 @@ public class GameOrder {
     }
 
     public void addOrder() {
-	byte numberLast = orderlist.get(orderlist.size());
+	byte numberLast = orderlist.get(orderlist.size()-1);
 	int number = (int) Math.random() * 3 + 1;
 	if (numberLast == (byte) number) {
 	    orderlist.add((byte) number);
