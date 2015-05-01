@@ -21,6 +21,7 @@ public class GameModel implements ActionListener {
     private final Gui gui;
     private GameOrder order;
     private Character pressedButton;
+    private int ticks = 0;
     
     public GameModel(Gui gui) {
 	this.gui = gui;
@@ -47,13 +48,18 @@ public class GameModel implements ActionListener {
 	    if (isPlaying) {
 		ArrayList<Byte> bytes = getOrder();
 		for (byte b : bytes) {
-		    int tick = 50 - bytes.indexOf(b);
+		    int tick = 20 - bytes.indexOf(b);
 		    if (tick < 0) {
 			tick = 10;
 		    }
 		    gui.changeLight(b);
+		    System.out.println(ticks + " " + tick);
+		    ticks %= tick;
+		    System.out.println(ticks + " " + tick);
+		    if(ticks == 0){
+			gui.changeLight((byte)0);
+		    }
 		}
-		isPlaying = false;
 		
 	    } else if (!isPlaying) {
 		return;
@@ -66,6 +72,7 @@ public class GameModel implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
+	ticks++;
 	update();
     }
     
