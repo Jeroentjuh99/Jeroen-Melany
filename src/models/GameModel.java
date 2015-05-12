@@ -47,23 +47,28 @@ public class GameModel implements ActionListener {
 	if (isGameRunning) {
 	    if (isPlaying) {
 		ArrayList<Byte> bytes = getOrder();
+		System.out.println(bytes);
 		for (byte b : bytes) {
 		    int tick = 20 - bytes.indexOf(b);
-		    if (tick < 0) {
+		    if (tick < 10) {
 			tick = 10;
 		    }
 		    gui.changeLight(b);
+		    
+		    System.out.println(ticks + " " + tick + " " + b);
+		    
 		    ticks %= tick;
 		    if (ticks == 0) {
 			gui.changeLight((byte) 0);
 		    }
 		}
-		if (ticks == 0) {
+//		if (ticks == 0) {
 		    isPlaying = false;
-		}
+//		}
 
 	    } else if (!isPlaying) {
 		return;
+		
 	    } else if (isGameOver) {
 		isPlaying = false;
 		isGameRunning = false;
