@@ -17,11 +17,12 @@ import view.Gui;
  */
 public class GameModel implements ActionListener {
 
-    private boolean isPlaying, isGameOver, isGameRunning = false;
+    private boolean isShowing, isGameOver, isGameRunning, isOn = false;
     private final Gui gui;
     private GameOrder order;
     private Character pressedButton;
     private int ticks = 0;
+    private byte current = 0;
 
     public GameModel(Gui gui) {
 	this.gui = gui;
@@ -31,7 +32,7 @@ public class GameModel implements ActionListener {
 	timer.start();
     }
 
-    public ArrayList getOrder() {
+    public ArrayList<Byte> getOrder() {
 	return order.getOrder();
     }
 
@@ -45,34 +46,33 @@ public class GameModel implements ActionListener {
 
     public void update() {
 	if (isGameRunning) {
-	    if (isPlaying) {
-		ArrayList<Byte> bytes = getOrder();
-		System.out.println(bytes);
-		for (byte b : bytes) {
-		    int tick = 20 - bytes.indexOf(b);
-		    if (tick < 10) {
-			tick = 10;
-		    }
-		    gui.changeLight(b);
-		    
-		    System.out.println(ticks + " " + tick + " " + b);
-		    
-		    ticks %= tick;
-		    if (ticks == 0) {
-			gui.changeLight((byte) 0);
-		    }
-		}
-//		if (ticks == 0) {
-		    isPlaying = false;
-//		}
+	    if (isShowing) {
 
-	    } else if (!isPlaying) {
-		return;
-		
-	    } else if (isGameOver) {
-		isPlaying = false;
-		isGameRunning = false;
-		isGameOver = false;
+		ArrayList<Byte> list = getOrder();
+		if (current < 0 || list.isEmpty()) {
+		    return;
+		}
+
+		if (current < list.size()) {
+		    if (!isOn) {
+			gui.changeLight((byte) 0);
+			gui.changeLight(list.get(current));
+			ticks = 0;
+			isOn = true;
+			return;
+		    } else {
+			if (ticks >= 10) {
+			    gui.changeLight((byte) 0);
+			    isOn = false;
+			    current++;
+			    ticks = 0;
+			    return;
+			}
+		    }
+		} else {
+		    isShowing = false;
+		    current = 0;
+		}
 	    }
 	}
     }
@@ -86,10 +86,39 @@ public class GameModel implements ActionListener {
 	if (charFromListener.equals('a')) {
 	    if (!isGameRunning && !isGameOver) {
 		isGameRunning = true;
-		isPlaying = true;
-	    } else {
-		this.pressedButton = charFromListener;
+		isShowing = true;
+	    }
+	} else {
+	    if (!isShowing && isGameRunning && !isGameOver) {
+		ArrayList<Byte> list = getOrder();
+		byte b = list.get(current);
+		if (Byte.parseByte(String.valueOf(charFromListener)) == b) {
+		    gui.changeLight(b);
+		    current++;
+		    if(current >= list.size()){
+			isShowing = true;
+			order.addOrder();
+			current = 0;
+		    }
+		} else{
+		    isGameOver = true;
+		    isGameRunning = false;
+		    gui.changeLight((byte)0);
+		    current = 0;
+		    gui.isGameOver();
+		}
 	    }
 	}
+    }
+    
+    public void newGame(){
+	this.order = new GameOrder();
+	this.isShowing = false; 
+	this.isGameOver = false;
+	this.isGameRunning = false;
+	this.isOn = false;
+	this.current = 0;
+	gui.changeLight((byte)0);
+	this.isGameOver = false;
     }
 }

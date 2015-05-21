@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import models.GameModel;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Gui extends JPanel implements ActionListener {
     private Byte light = 0;
     private Tile tile = null;
     private Feedback feedback;
+    private GameModel model;
 
     public Gui(Dimension dim) {
 	this.setSize(dim);
@@ -43,5 +45,15 @@ public class Gui extends JPanel implements ActionListener {
     
     public void changeLight(Byte b){
 	this.light = b;
+    }
+    
+    public void isGameOver(){
+	String message = "You pressed the wrong button. Try again :D";
+	int a = JOptionPane.showConfirmDialog(this, message, "Game over", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+	if (a == JOptionPane.ABORT || a == JOptionPane.CANCEL_OPTION || a == JOptionPane.CLOSED_OPTION){
+	    System.exit(0);
+	} else {
+	    model.newGame();
+	}
     }
 }

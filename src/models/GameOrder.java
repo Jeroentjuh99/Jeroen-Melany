@@ -17,12 +17,8 @@ public class GameOrder {
 
     public GameOrder() {
 	this.orderlist = new ArrayList<Byte>();
-	int start = (int) Math.random() * 3 + 1;
+	int start = (int) (Math.random() * 4) + 1;
 	orderlist.add((byte) start);
-	
-	for(int i = 0; i < 5; i++){
-	    addOrder();
-	}
     }
 
     public void addOrder() {
