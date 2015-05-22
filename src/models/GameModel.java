@@ -55,6 +55,7 @@ public class GameModel implements ActionListener {
 
 		if (current < list.size()) {
 		    if (!isOn) {
+			
 			gui.changeLight((byte) 0);
 			gui.changeLight(list.get(current));
 			ticks = 0;

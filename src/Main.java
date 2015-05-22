@@ -24,6 +24,7 @@ public class Main {
 
 	Gui gui = new Gui(dim);
 	GameModel model = new GameModel(gui);
+	gui.setGameModel(model);
 	WiiMote wMote = new WiiMote(gui, model);
 
 	frame.setContentPane(gui);

@@ -56,4 +56,8 @@ public class Gui extends JPanel implements ActionListener {
 	    model.newGame();
 	}
     }
+
+    public void setGameModel(GameModel model) {
+	this.model = model;
+    }
 }
