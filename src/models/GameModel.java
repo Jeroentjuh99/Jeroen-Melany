@@ -84,6 +84,9 @@ public class GameModel implements ActionListener {
     }
 
     public void pressedButton(Character charFromListener) {
+	if (charFromListener.equals('c')){
+	    System.exit(0);
+	}
 	if (charFromListener.equals('a')) {
 	    if (!isGameRunning && !isGameOver) {
 		isGameRunning = true;

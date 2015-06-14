@@ -27,6 +27,7 @@ public class MyListener implements WiimoteListener {
 
     @Override
     public void onButtonsEvent(WiimoteButtonsEvent e) {
+	System.out.println(e.getButtonsJustPressed());
 	if (e.isButtonUpPressed()) {
 	    model.pressedButton('1');
 	} else if (e.isButtonRightPressed()) {
@@ -37,6 +38,9 @@ public class MyListener implements WiimoteListener {
 	    model.pressedButton('4');
 	} else if (e.isButtonAPressed()) {
 	    model.pressedButton('a');
+	} else if (e.getButtonsJustPressed() == 0x12){
+	    System.out.println("this");
+	    model.pressedButton('c');
 	} else {
 	    //System.out.println("verkeerde button" + e.getButtonsJustReleased());
 	}
